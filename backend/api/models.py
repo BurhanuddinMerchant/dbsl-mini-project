@@ -22,7 +22,7 @@ class NurseModel(models.Model):
     gender = models.CharField(choices=GENDER_CHOICES, max_length=10)
     phoneNumber = models.CharField(max_length=10)
     email = models.EmailField(max_length=256)
-    password = models.CharField(max_length=64)
+    password = models.CharField(max_length=64,blank=True,null=True)
     vaccineCenter = models.ForeignKey(
         VaccineCenterModel, on_delete=CASCADE, null=True, blank=True, default=None
     )

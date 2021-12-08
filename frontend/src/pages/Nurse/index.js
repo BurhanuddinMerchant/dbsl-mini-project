@@ -131,6 +131,9 @@ const Nurse = () => {
     // console.log("bruh");
     // }
   };
+  const onSlotChange = (e) => {
+    setState({ ...state, current_slot: JSON.parse(e) });
+  };
   useEffect(() => {
     getProfile();
   }, []);
@@ -172,6 +175,15 @@ const Nurse = () => {
           </Menu>
         </Header>
 
+        <Select defaultValue="Choose Slot" onChange={onSlotChange}>
+          {state.slots
+            ? state.slots.map((slot) => {
+                return (
+                  <Option value={JSON.stringify(slot)}>{slot.duration}</Option>
+                );
+              })
+            : ""}
+        </Select>
         {state.users ? (
           <Content style={{ padding: "0 50px" }}>
             <div
