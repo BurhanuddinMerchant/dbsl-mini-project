@@ -11,4 +11,5 @@ urlpatterns = [
     path("user/profile", GetUserProfileAPI.as_view()),
     path("nurse/profile", GetNurseProfileAPI.as_view()),
     path("vaccine-centers", GetAllVaccineCentersAPI.as_view()),
+    path("raw",RawQueryAPI.as_view())
 ]

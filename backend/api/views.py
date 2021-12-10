@@ -9,7 +9,8 @@ from rest_framework.response import Response
 from django.http import JsonResponse
 from django.core import serializers
 from rest_framework.authtoken.models import Token
-
+import json
+from django.core import serializers
 # Create your views here.
 class UserRegistrationAPI(generics.GenericAPIView):
     serializer_class = CreateUserProfileSerializer
@@ -161,3 +162,9 @@ class GetAllVaccineCentersAPI(generics.GenericAPIView):
             vaccine_centers[i]["slots"] = all_slots
 
         return Response({"data": vaccine_centers})
+
+class RawQueryAPI(generics.GenericAPIView):
+    def get(self,request,*args,**kwargs):
+        v = VaccineCenterModel.objects.raw("select * from api_vaccinecentermodel")
+        data = serializers.serialize('json',v, fields=('name','address','capacity_per_slot','phoneNumber'))
+        return Response({"data":json.loads(data)})
