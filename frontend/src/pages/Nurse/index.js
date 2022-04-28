@@ -48,7 +48,8 @@ const Nurse = () => {
     var config = {
       method: "get",
       url:
-        "http://localhost:8000/api/nurse/users?slotID=" + state.current_slot.id,
+        `${process.env.REACT_APP_SERVER_URL}api/nurse/users?slotID=` +
+        state.current_slot.id,
       headers: {
         Authorization: "Bearer " + sessionStorage.getItem("access_token"),
         "Content-Type": "application/json",
@@ -68,7 +69,7 @@ const Nurse = () => {
   const getProfile = async () => {
     const config = {
       method: "get",
-      url: "http://localhost:8000/api/nurse/profile",
+      url: `${process.env.REACT_APP_SERVER_URL}api/nurse/profile`,
       headers: {
         Authorization: "Bearer " + sessionStorage.getItem("access_token"),
       },
@@ -112,7 +113,7 @@ const Nurse = () => {
 
     var config = {
       method: "patch",
-      url: "http://localhost:8000/api/vaccinate",
+      url: `${process.env.REACT_APP_SERVER_URL}pi/vaccinate`,
       headers: {
         Authorization: "Bearer " + sessionStorage.getItem("access_token"),
         "Content-Type": "application/json",

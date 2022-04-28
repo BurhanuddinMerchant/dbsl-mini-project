@@ -73,7 +73,7 @@ const User = () => {
 
       var config = {
         method: "patch",
-        url: "http://localhost:8000/api/user/register-vaccination",
+        url: `${process.env.REACT_APP_SERVER_URL}api/user/register-vaccination`,
         headers: {
           Authorization: "Bearer " + sessionStorage.getItem("access_token"),
           "Content-Type": "application/json",
@@ -110,7 +110,7 @@ const User = () => {
   const getUserProfileAndVaccineCenters = async () => {
     let config = {
       method: "get",
-      url: "http://localhost:8000/api/user/profile",
+      url: `${process.env.REACT_APP_SERVER_URL}api/user/profile`,
       headers: {
         Authorization:
           "Bearer " + (await sessionStorage.getItem("access_token")),
@@ -146,7 +146,7 @@ const User = () => {
       })
       .then(() => {
         axios
-          .get("http://localhost:8000/api/vaccine-centers")
+          .get(`${process.env.REACT_APP_SERVER_URL}api/vaccine-centers`)
           .then(async (response) => {
             setState((state) => ({
               ...state,

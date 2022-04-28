@@ -22,7 +22,7 @@ const Login = () => {
         "Content-Type": "application/json",
       },
       data: data,
-      url: "http://localhost:8000/api/login",
+      url: `${process.env.REACT_APP_SERVER_URL}api/login`,
     };
 
     axios(config)

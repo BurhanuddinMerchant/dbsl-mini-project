@@ -24,7 +24,7 @@ const RegistrationForm = () => {
     });
     var config = {
       method: "post",
-      url: "http://localhost:8000/api/register/user",
+      url: `${process.env.REACT_APP_SERVER_URL}api/register/user`,
       headers: {
         "Content-Type": "application/json",
       },
